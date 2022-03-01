@@ -23,7 +23,7 @@ def computeSimilarities(listOfTokens, listOfTokens2):
     #Compute cosine similarity between all pairs
     return util.cos_sim(embeddings1, embeddings2)
 
-def log(similarityValues, sentences1, sentences2, amtOfResultsToLog=10):
+def log(customName, similarityValues, sentences1, sentences2, amtOfResultsToLog=10):
     #Add all pairs to a list with their cosine similarity score
     all_sentence_combinations = []
     for i in range(len(similarityValues)-1):
@@ -33,6 +33,6 @@ def log(similarityValues, sentences1, sentences2, amtOfResultsToLog=10):
     #Sort list by the highest cosine similarity score
     all_sentence_combinations = sorted(all_sentence_combinations, key=lambda x: x[0], reverse=True)
 
-    f = open("{}.txt".format(datetime.now().isoformat()), 'a')
+    f = open("results/{}.txt".format(customName), 'a')
     for score, i, j in all_sentence_combinations[0:amtOfResultsToLog]:
         f.write("{}\n{}\n{:.4f}\n".format(sentences1[i], sentences2[j], similarityValues[i][j]))

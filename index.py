@@ -1,8 +1,8 @@
 from ast import parse
 from utils import computeSimilarities, log, parseTokensFromFile
 
-f1 = parseTokensFromFile("crazynewideas.txt", "paragraph")
-f2 = parseTokensFromFile("ideageneration.txt", "paragraph")
+f1 = parseTokensFromFile("articles/crazynewideas.txt", "paragraph")
+f2 = parseTokensFromFile("articles/ideageneration.txt", "paragraph")
 
 similarities = computeSimilarities(f1, f2)
 

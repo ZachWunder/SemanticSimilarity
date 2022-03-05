@@ -1,10 +1,24 @@
 from ast import parse
 from utils import computeSimilarities, log, parseTokensFromFile
+import random
+import os
 
-f1 = parseTokensFromFile("articles/crazynewideas.txt", "paragraph")
-f2 = parseTokensFromFile("articles/ideageneration.txt", "paragraph")
+pgarticles = []
+for root, subdirs, files in os.walk('articles/pg'):
+  pgarticles = files
 
-similarities = computeSimilarities(f1, f2)
+saarticles = []
+for root, subdirs, files in os.walk('articles/samaltman'):
+  saarticles = files
 
-log("CrazyNewIdeas_IdeaGeneration_Paragraph", similarities, f1, f2)
+
+for i in range(3):
+  rand1 = random.randint(0,30)
+  rand2 = random.randint(0,30)
+  f1 = parseTokensFromFile("articles/pg/{}".format(pgarticles[rand1]), "paragraph")
+  f2 = parseTokensFromFile("articles/samaltman/{}".format(saarticles[rand2]), "paragraph")
+
+  similarities = computeSimilarities(f1, f2)
+
+  log("Top3", similarities, f1, f2)
 

@@ -5,7 +5,10 @@ model = SentenceTransformer('all-mpnet-base-v2')
 # tokenType = sentence | paragraph | file
 def parseTokensFromFile(path, tokenType):
     if tokenType == "sentence":
-        raise ValueError("To Be Implemented")
+        text_file= open(path,'r')
+        data=text_file.read()
+        listOfSentences = data.split(".")
+        return listOfSentences
     elif tokenType == "paragraph":
         valueToBeRemoved = ''
         file = open(path, "r")
@@ -14,6 +17,8 @@ def parseTokensFromFile(path, tokenType):
         return sentences
     elif tokenType == "file":
         raise ValueError("To Be Implemented")
+    else:
+        raise ValueError("Invalid Token Type")
 
 def computeSimilarities(listOfTokens, listOfTokens2): 
     #Encode all sentences

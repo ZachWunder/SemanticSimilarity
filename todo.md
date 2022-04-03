@@ -1,0 +1,1 @@
+- Split on more than just period (!, ;, newline)
